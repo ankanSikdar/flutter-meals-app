@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/categories_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,24 +17,7 @@ class MyApp extends StatelessWidget {
               fontSize: 28,
             ),
           )),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Meals App'),
-      ),
-      body: Center(
-        child: Text(
-          'Navigation Time!',
-          style: Theme.of(context).textTheme.headline6,
-        ),
-      ),
+      home: CategoriesScreen(),
     );
   }
 }
