@@ -22,7 +22,7 @@ class CategoriesScreen extends StatelessWidget {
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(25),
       ),
     );
   }
