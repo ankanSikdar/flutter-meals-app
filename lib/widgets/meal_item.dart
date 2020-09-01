@@ -50,10 +50,14 @@ class MealItem extends StatelessWidget {
     }
   }
 
+  void onSelect(BuildContext context) {
+    Navigator.pushNamed(context, '/meal-details', arguments: id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => onSelect(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 7,
