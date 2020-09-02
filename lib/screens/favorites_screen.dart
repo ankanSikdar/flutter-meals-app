@@ -9,10 +9,13 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(favoriteMeals);
     return Container(
       child: favoriteMeals.isEmpty
-          ? Text('Empty')
+          ? Center(
+              child: Text(
+              'No Favorites Added Yet!',
+              style: Theme.of(context).textTheme.headline6,
+            ))
           : ListView.builder(
               itemBuilder: (context, index) {
                 return MealItem(
