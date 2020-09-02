@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
+  final Function onSave;
+  final Map<String, bool> filters;
+
+  FiltersScreen({this.filters, this.onSave});
+
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
 }
@@ -11,6 +16,15 @@ class _FiltersScreenState extends State<FiltersScreen> {
   bool _lactoseFree = false;
   bool _vegan = false;
   bool _vegetarian = false;
+
+  @override
+  initState() {
+    super.initState();
+    _glutenFree = widget.filters['gluten'];
+    _lactoseFree = widget.filters['lactose'];
+    _vegan = widget.filters['vegan'];
+    _vegetarian = widget.filters['vegetarian'];
+  }
 
   Widget switchListBuilder(
       {String title, String subtitle, bool value, Function onChange}) {
@@ -84,9 +98,35 @@ class _FiltersScreenState extends State<FiltersScreen> {
                     });
                   },
                 ),
+                RaisedButton(
+                  color: Theme.of(context).primaryColor,
+                  padding: EdgeInsets.all(10),
+                  onPressed: () {
+                    widget.onSave({
+                      'gluten': _glutenFree,
+                      'lactose': _lactoseFree,
+                      'vegan': _vegan,
+                      'vegetarian': _vegetarian,
+                    });
+                    Navigator.pushReplacementNamed(context, '/');
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.save,
+                        size: 30,
+                      ),
+                      Text(
+                        'Save',
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
-          )
+          ),
         ],
       ),
     );

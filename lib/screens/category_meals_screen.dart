@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/dummy_data.dart';
+import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/widgets/meal_item.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
+  final List<Meal> availabelMeals;
+
+  CategoryMealsScreen({this.availabelMeals});
+
   @override
   Widget build(BuildContext context) {
     final argumentData =
@@ -11,7 +15,7 @@ class CategoryMealsScreen extends StatelessWidget {
     final id = argumentData['id'];
 
     final categoryMeals =
-        DUMMY_MEALS.where((meal) => meal.categories.contains(id)).toList();
+        availabelMeals.where((meal) => meal.categories.contains(id)).toList();
 
     return Scaffold(
       appBar: AppBar(
